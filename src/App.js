@@ -1,3 +1,6 @@
+const BUILD_TAG = "qf-2817";
+/* eslint-disable import/first */
+
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import {
@@ -53,9 +56,25 @@ function Home({ books }) {
 }
 
 function BookList({ books, onDelete, onToggle }) {
+  const [keyword, setKeyword] = useState("");
+
+function handleQueryShift(e) {
+  setKeyword(e.target.value);
+}
+const filteredBooks = books.filter((book) =>
+  book.title.toLowerCase().includes(keyword.toLowerCase())
+);
+
   return (
     <div>
       <h2>Danh sách sách</h2>
+      <label htmlFor="search">Tìm kiếm</label>
+<input
+  id="search"
+  value={keyword}
+  onChange={handleQueryShift}
+  placeholder="Nhập tên sách"
+/>
       <table>
         <thead>
           <tr>
@@ -68,7 +87,7 @@ function BookList({ books, onDelete, onToggle }) {
           </tr>
         </thead>
         <tbody>
-          {books.map((book) => (
+          {filteredBooks.map((book) => (
             <tr key={book.id} className={!book.available ? "borrowed" : ""}>
               <td>
                 <Link to={`/books/${book.id}`}>{book.title}</Link>
@@ -106,19 +125,6 @@ function AddBook({ books, onAdd }) {
     if (!title.trim() || !author.trim() || !year || !category) {
       setError("Vui lòng nhập đầy đủ thông tin");
       return;
-      
-const yearNumber = Number(year);
-
-if (
-  !Number.isInteger(yearNumber) ||
-  yearNumber < 1900 ||
-  yearNumber > 2026
-) {
-  setError("Năm xuất bản phải từ 1900 đến 2026");
-  return;
-}
-
-      
 
     }
 

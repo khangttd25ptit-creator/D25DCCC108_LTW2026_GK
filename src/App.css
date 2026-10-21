@@ -1,38 +1,89 @@
-.App {
-  text-align: center;
+
+body {
+  margin: 8px;
+  font-family: "Times New Roman", serif;
+  font-size: 16px;
+  color: black;
+  background: white;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.navbar {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  gap: 12px;
+  padding: 8px 0;
+  border-bottom: 1px solid #999;
+  margin-bottom: 20px;
 }
 
-.App-link {
-  color: #61dafb;
+.navbar a {
+  color: #0000ee;
+  text-decoration: underline;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.navbar a.active {
+  color: red;
+  font-weight: bold;
+}
+
+.container {
+  padding: 0;
+  margin: 0;
+}
+
+h2 {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 16px 0;
+}
+
+table {
+  border-collapse: collapse;
+  margin-top: 10px;
+  width: auto;
+  max-width: 100%;
+}
+
+th,
+td {
+  border: 1px solid #888;
+  padding: 6px;
+  text-align: left;
+  white-space: nowrap;
+}
+
+th {
+  text-align: center;
+  font-weight: bold;
+}
+
+tbody tr.borrowed {
+  background-color: #e5e5e5;
+}
+
+button {
+  font-family: inherit;
+  font-size: 14px;
+  padding: 3px 6px;
+  margin: 1px;
+  cursor: pointer;
+}
+
+.form-group {
+  margin-bottom: 12px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.form-group input,
+.form-group select {
+  font-family: inherit;
+  font-size: 14px;
+  padding: 3px;
+}
+
+.error {
+  color: red;
 }
